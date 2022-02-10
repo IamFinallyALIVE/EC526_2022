@@ -1,15 +1,18 @@
 #include <iostream>
 #include <cmath>
 
-using std::cout;
-using std::cin;
-using std::ios;
-using std::cos;
-using std::fabs;
+using namespace std;
+
 
 int getLegendreCoeff(double* a, int n);
 
+double evalPolynomial(double x, double* a, int n);
+
+double evalPolyDeriv(double x, double* a, int n);
+
 int getLegendreZero(double* zero, double* a, int n);
+
+
 
 int main(int argc, char** argv)
 {
@@ -44,12 +47,12 @@ int main(int argc, char** argv)
   }
 
   // Print
-  std::cout << "Coefficients\n"; 
+  cout << "Coefficients\n"; 
   for (int i = order; i > 0; i--) {
-    std::cout << a[i] << " x^" << i << " +  \n";
+    cout << a[i] << " x^" << i << " +  \n";
 
   }
-  std::cout << a[0] << " x^0\n";
+  cout << a[0] << " x^0\n";
 
   // Compute the zeros
   double* zeros = new double[order];
@@ -60,17 +63,18 @@ int main(int argc, char** argv)
   }
 
   // Print
-  std::cout << "Zeros\n";
+  cout << "Zeros\n";
   for (int i = 0; i < order; i++) {
-    std::cout << zeros[i] << " ";
+    cout << zeros[i] << " ";
   }
-  std::cout << "\n";
+   cout << "\n";
 
   // Clean up
   delete[] a;
 
 }
 
+// P_n has  n + 1  coefficents coeffs[n][0], coeffs[n][1], ..,  coeffs[n][n]
 // This function's wasteful because every time you run it
 // you have to re-compute the entire recursive stack.
 // But whatever.
