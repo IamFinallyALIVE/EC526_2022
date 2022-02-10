@@ -13,7 +13,7 @@
 using std::cout; 
 using std::endl;
 
-// A function to print arrays.
+// A function to print arrays -- debug sorting for small arrays
 void printArray(int list[], int arraySize)
 {
   cout << " --------" << endl;
@@ -45,6 +45,12 @@ int main()
   in number of seconds elapsed  since January 1, 1970. 
   If the system has no time, .1 is returned.
   */
+
+  // Reapeat a few time to get better idea
+  for(int repeat = 0; repeat  < 4; repeat++)
+    {
+      cout << endl << "Trial #" << repeat +1 <<":  "; 
+     
   int time_seconds = time(0);
   srand(time_seconds%100); // seed the random number generator.
 
@@ -57,14 +63,13 @@ int main()
   // Randomly choose an element to search for.
   int find = list[rand()%Nsize] ;
 
-  // First, search with a linear search. A linear search doesn't depend
-  // on a list being sorted.
+  // First, search with a linear search. A linear search doesn't depend  on a list being sorted.
   cout << "Searching for key = "<< find << endl;
   i = linearSearch(list,find ,Nsize, LinCount);
 
   // Print the number of iterations compared to the average.
   cout <<" Linear search found at  "<< i << 
-  " with " <<LinCount << " iterations  compared to Nsize/2 " << Nsize/2 << endl;
+  " with " <<LinCount << " iterations compared average   Nsize/2 " << Nsize/2 << endl;
 
   // If the array is small enough, print it out... if you are so interested.
   /*
@@ -98,15 +103,15 @@ int main()
 
   // Print the number of iterations compared to the average.
   cout <<" Binary  search found at  "<< i <<
-  " with " <<BinCount << " iterations  compared to log2(Nsize) " << log(Nsize)/log(2) << endl;
+  " with " <<BinCount << " iterations  compared to average log2(Nsize) " << log(Nsize)/log(2) << endl;
 
   // Perform a dictionary search. 
   i = dictionarySearch(list,find ,Nsize, DctCount);  
 
   // Print the number of iterations compared to the average.
   cout <<" Dictionary   found at  "<< i << 
-  " with " <<DctCount << " iterations compared to log2(log2(Nsize)  " << log(log(Nsize)/log(2))/log(2) <<  endl; 
-
+  " with " <<DctCount << " iterations compared to average log2(log2(Nsize)  " << log(log(Nsize)/log(2))/log(2) <<  endl; 
+    }
   // Free the allocated memory.
   delete [] list;
 
