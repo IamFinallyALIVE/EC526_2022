@@ -1,4 +1,4 @@
-#plot  'Complete_TAVG_summary.txt' using 1:4:5 w errorbars
+plot  'Complete_TAVG_summary.txt' using 1:4:5 w errorbars
 
 
 f11(x) = c0 + c1*x + c2*x**2 + c3*x**3+ c4*x**4 + c5*x**5
