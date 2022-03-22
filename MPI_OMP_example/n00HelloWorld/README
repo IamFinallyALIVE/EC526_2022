@@ -1,5 +1,6 @@
 To run  on command line.
 
+bash
 module load gcc
 module load  mvapich/2.3.3
 
