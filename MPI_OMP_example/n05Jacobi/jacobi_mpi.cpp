@@ -50,9 +50,9 @@ int main(int argc, char** argv)
 
    //printf("I am rank %d of %d and I have a local size %d.\n", my_rank, world_size, local_size); 
    
-   x = new double[local_size];
-   xtmp = new double[local_size];
-   b = new double[local_size];
+    x = (double*)malloc(local_size * sizeof(double));    //   x = new double[local_size];
+    xtmp = (double*)malloc(local_size * sizeof(double)); //   xtmp = new double[local_size];
+    b = (double*)malloc(local_size * sizeof(double));    //   b = new double[local_size];
 
    for (i=0;i<local_size;i++) { x[i] = 0.0; xtmp[i] = 0.0; b[i] = 0.0; }
    

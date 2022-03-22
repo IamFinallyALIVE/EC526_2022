@@ -1,0 +1,51 @@
+SEE 4 Lecture Notes: Parallelization Methods
+
+(Can ignore OpenMP threads which is essentially the same as OpenACC)
+
+=============== Ok Here is MPI light ==============
+
+ To run  on command line.
+bash
+module load gcc
+module load  mvapich/2.3.3
+
+There is of course a scalar code before MPIing it
+g++  scal_hello.cpp -o scal_hello
+./scal_hello
+
+mpicc  mpi_hello.cpp -o mpi_hello
+
+mpirun -np  64  ./mpi_hello
+
+Note order of Hello,s 
+
+See lots of nice stuff at
+
+https://www.bu.edu/tech/support/research/training-consulting/online-tutorials/mpi/example1-2
+/
+ 
+---- Ok can use a script queue by a script ---
+
+by
+
+qsub -l h_rt=0:05:00 -P paralg submit_mpi_hello.sh
+
+http://www.bu.edu/tech/support/research/system-usage/running-jobs/submitting-jobs/
+
+look at it by
+
+qstat -u brower
+
+
+--- Now Jacobi --
+
+g++ jacob_scal.cpp  -o jacobi_scal   (not gcc?) 
+
+mpicc -lm  jacobi_mpi.cpp -o jacobi_mpi
+
+NOTE: For mpicc on the SCC I had to attach -lm to the compile
+instructino and get rid of the C++ "new" syntac for malloc
+
+    x = (double*)malloc(local_size * sizeof(double));
+    xtmp = (double*)malloc(local_size * sizeof(double));
+    b = (double*)malloc(local_size * sizeof(double));
