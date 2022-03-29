@@ -47,6 +47,28 @@ int main()
   
   for(int x = 0; x < N; x++)
     cout<<  " x = " << setw(4) << x << " Compare newF[x] : " << setw(25) << Fnew[x] <<" with F[x]  "<< F[x] << endl;
+
+  /*******************     TEST RECURSIVE  FFT **********************/
+  
+  cout << endl << " Test  FFTrecursion " << endl; 
+  
+  for(int x = 0; x < N; x++){
+    F[x] = Fsave[x];
+    Ftilde[x] = 0.0;
+    Fnew[x] = 0.0;
+  }
+
+  cout << " Calls at N = " << N << endl;
+  FFTrecursion( Ftilde,  F, omega,  N);
+
+  for(int k = 0; k < N; k++)
+    cout<<" k = "<< k << "  Ftilde =   " <<  Ftilde[k]  << endl;
+  
+  FFTrecursion_inv(Fnew,  Ftilde, omega,  N);
+
+  
+  for(int x = 0; x < N; x++)
+    cout<<  " x = " << setw(4) << x << " Compare Fnew[x] : " << setw(25) << Fnew[x] <<" with F[x]  "<< F[x] << endl;
   
   /*************    TEST ITERATIVE  FFT **************/
   
@@ -69,27 +91,6 @@ int main()
   for(int x = 0; x < N; x++)
     cout<<  " x = " << setw(4) << x << " Compare Fnew[x] : " << setw(25) << Fnew[x] <<" with F[x]  "<< F[x] << endl;
   
-  /*******************     TEST ITERATIVE  FFT **********************/
-  
-  cout << endl << " Test  FFTrecursion " << endl; 
-  
-  for(int x = 0; x < N; x++){
-    F[x] = Fsave[x];
-    Ftilde[x] = 0.0;
-    Fnew[x] = 0.0;
-  }
-
-  cout << " Calls at N = " << N << endl;
-  FFTrecursion( Ftilde,  F, omega,  N);
-
-  for(int k = 0; k < N; k++)
-    cout<<" k = "<< k << "  Ftilde =   " <<  Ftilde[k]  << endl;
-  
-  FFTrecursion_inv(Fnew,  Ftilde, omega,  N);
-
-  
-  for(int x = 0; x < N; x++)
-    cout<<  " x = " << setw(4) << x << " Compare Fnew[x] : " << setw(25) << Fnew[x] <<" with F[x]  "<< F[x] << endl;
   
   return 0;
 }

@@ -22,6 +22,7 @@ void BitRevArray(Complex * Frev, Complex * F, int N);
 unsigned int  reverseBits(unsigned int x, int N);
 void FFTrecursion(Complex* F, Complex * Ftilde, Complex * omega, int N);
 void FFTrecursion_inv(Complex* Ftilde, Complex * F, Complex * omega, int N);
-
+void FFTiterative(Complex* F, Complex * Ftilde, Complex * omega, int N);
+void FFTiterative_inv(Complex* Ftilde, Complex * F, Complex * omega, int N);
   
 #endif 
